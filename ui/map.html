@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Home Location</title>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet"
+          href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+          crossorigin=""/>
+
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+        #map {
+            width: 100%;
+            height: 100%;
+        }
+        #confirmBtn {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            padding: 10px 20px;
+            background-color: white;
+            border: 2px solid #4CAF50;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+<div id="map"></div>
+<button id="confirmBtn">Confirm Location</button>
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin="">
+</script>
+
+<script>
+    var lat = 19.0760;
+    var lng = 72.8777;
+
+    var map = L.map('map').setView([lat, lng], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    var marker = L.marker([lat, lng]).addTo(map);
+
+    let followMouse = false;
+
+    marker.on('click', function () {
+        followMouse = true;
+    });
+
+    map.on('mousemove', function (e) {
+        if (followMouse) {
+            marker.setLatLng(e.latlng);
+        }
+    });
+
+    map.on('click', function (e) {
+        if (followMouse) {
+            followMouse = false;
+            marker.setLatLng(e.latlng);
+        }
+    });
+
+    // CONFIRM BUTTON LOGIC
+    document.getElementById("confirmBtn").onclick = async function () {
+        var pos = marker.getLatLng();
+
+        // Send to Python
+        if (window.pywebview) {
+            await pywebview.api.confirm_location(pos.lat, pos.lng);
+        }
+
+        // Optional: close window or show feedback
+        alert("Location confirmed!");
+    };
+</script>
+
+</body>
+</html>
