@@ -4,23 +4,41 @@ A smart Blood Bank Management System built using Python that focuses on speed, a
 
 ✨ Features
 👤 User Side
+
 🔐 Login & Signup system with authentication
+
 📧 Email verification using SMTP
+
 🏠 Dashboard with personalized user details
+
 👤 Profile view and management
+
 🔍 Search for blood availability
+
 ❤️ Request for blood donation
+
 🏥 Blood Request System
+
 ⚡ Fast and simplified blood packet request process (optimized for emergencies)
+
 🧾 Auto-filled user details from database
+
 📱 QR-based supplementary fee system (demo implementation)
+
 ⏳ Automatic request processing with simulated confirmation
+
 ✅ Redirect to Waiting Room after successful request
+
 ⏳ Waiting Room & Tracking
+
 📊 View queue status (users ahead in line)
+
 📦 Blood packet tracking system (currently static, structure ready for real-time data)
+
 🔄 Designed for real-time scalability
+
 🌍 Location & Accessibility
+
 🗺 Integration with maps using PyWeb + Leaflet.js
 
 📍 Displays nearby blood bank locations (demo data for 3–4 banks)
@@ -50,11 +68,15 @@ qrcode for (QR Code generation)
 geocoder for calculating the the actual locaton from lattitude and longitude values.
 
 Screenshots
-Example:
+
 <img width="453" height="866" alt="image" src="https://github.com/user-attachments/assets/baadb98b-223a-49f0-90d2-82341c503bf6" />
+
 <img width="445" height="857" alt="image" src="https://github.com/user-attachments/assets/247b6a80-722c-4717-9bae-192a06ca17d2" />
+
 <img width="445" height="852" alt="image" src="https://github.com/user-attachments/assets/8550197f-c6a4-400e-a315-65107cc9bba2" />
+
 <img width="452" height="862" alt="image" src="https://github.com/user-attachments/assets/ff219fac-9923-4518-9311-6bea849baf54" />
+
 <img width="449" height="864" alt="image" src="https://github.com/user-attachments/assets/021c8b7f-484a-454d-bf44-b5fbe0ba0cf1" />
 
 
